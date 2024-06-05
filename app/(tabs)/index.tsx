@@ -13,7 +13,7 @@ export default function HomeScreen() {
   const [errorMsg, setErrorMsg] = useState("");
   const [longitude, setLongitude] = useState("");
   const[latitude,setLatitude] = useState("");
-  const weatherkey = "d01d6de9a51e8661a4d9d61c12a89372";
+  const weatherkey = "Create your own weatherAPI key by registering weather API website";
   const weather_APICall = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}"
 
   
