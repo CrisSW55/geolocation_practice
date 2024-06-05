@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Platform, Text, View, StyleSheet } from 'react-native';
+import { Platform, Text, View, StyleSheet,Button } from 'react-native';
 import * as Location from 'expo-location';
 
 import { HelloWave } from '@/components/HelloWave';
@@ -9,8 +9,18 @@ import { ThemedView } from '@/components/ThemedView';
 
 
 export default function HomeScreen() {
-  const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [location, setLocation] = useState({});
+  const [errorMsg, setErrorMsg] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const[latitude,setLatitude] = useState("");
+  const weatherkey = "d01d6de9a51e8661a4d9d61c12a89372";
+  const weather_APICall = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}"
+
+  
+  function showLocation(){
+    setLatitude(text.slice(22,32));
+    setLongitude(text.slice(45,57));
+  }
 
   useEffect(() => {
     (async () => {
@@ -34,8 +44,26 @@ export default function HomeScreen() {
   }
   return (
   <>
-   <View style={styles.container}>
+
+<View style={styles.container}>
     <Text style={styles.paragraph}>{text}</Text>
+  </View>
+
+   <View style={styles.container}>
+    <Text style={styles.paragraph}>Latitude: {latitude}</Text>
+  </View>
+  <View style={styles.container}>
+    <Text style={styles.paragraph}>Longitude: {longitude}</Text>
+  </View>
+
+  
+  <View style={styles.container}>
+  <Button
+  onPress={showLocation}
+  title="Click show location"
+  color="#841584"
+  accessibilityLabel="Learn more about this purple button"
+/>
   </View>
   </>
    
